@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var userModel = require('./modules/user');
 var app = express();
+var constants = require('./utils/constants');
 
 mongoose.Promise = global.Promise;//resolve start warning message
 //var db = mongoose.createConnection('localhost','test');
@@ -13,7 +14,9 @@ mongoose.connection.on("open", function(ref) {
 mongoose.connection.on("error", function(err) {
   console.log("Could not connect to mongo server!");
 });
-mongoose.connect('mongodb://localhost/cmapidb');
+
+console.log("constants.DBUrl:"+constants.DBUrl);
+mongoose.connect(constants.DBUrl);
 //mongoose.connect('mongodb://47.92.76.55:27017/cmapidb');
 
 app.use(bodyParser.json({limit: '1mb'})); // for parsing application/json
@@ -26,8 +29,9 @@ app.get('/hello', function(req, res){
 
 /**register user**/
 app.post('/register', function(req, res){
- console.log(req.header("content-type"));
-	var user_name=req.body.user;  
+  try{
+    console.log(req.header("content-type"));
+    var user_name=req.body.user;  
   	var password=req.body.password;  
   	console.log("User name = "+user_name+", password is "+password); 
   	//findbyusername
@@ -42,25 +46,54 @@ app.post('/register', function(req, res){
   		userentity.save();
   		res.send({"message": "register successfully !!!"});
   	})
+  }catch(e){
+    console.log("post:register catch block!!!");
+     res.send({"message":"go to exception flow"});
+  }
 });
 
 /**user login**/
 app.post('/login', function(req, res){
-	var user_name=req.body.user;  
-  	var password=req.body.password;  
+  try{
+	  var user_name=req.body.user;  
+  	var password=req.body.password;
+    if(user_name==null || password==null){
+      res.send({"message": "please input user name and password"});
+    }
   	console.log("User name = "+user_name+", password is "+password); 
   	userModel.findByUser(user_name,password,function(error,userObject){
   		if(error != null){
-  			res.send(error);
+  			res.send({"message": error});
   			return;
   		}
-  		console.log(userObject.username);
   		if(userObject!=null){
-  			console.log("userObject:"+userObject.username);
-  			console.log("userObject:"+userObject.password);
         res.send({"message":"login successfully"});
-  		}
+  		}else{
+        res.status(constants.HttpStatus_WhenVerifyFailed);
+        res.send({"message":"username or password wrongly"});
+      }
   	});
+  }catch(e){
+    console.log("post:login catch block!!!");
+    res.send({"message":"go to exception flow"});
+  }
+});
+
+/**show cards list to let user select**/
+app.post('/loadcards', function(req, res){
+  var user_name=req.body.user;  
+
+ //call bank API to get the cards list
+  res.send({"message":"login successfully"});
+
+});
+
+/**card link to alipay**/
+app.post('/linkalipay', function(req, res){
+  var user_name=req.body.cardno;  
+
+ //call ali API to get the cards list
+
 });
 
 

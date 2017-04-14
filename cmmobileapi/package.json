@@ -1,6 +1,6 @@
 {
-  "name": "hello-world",
-  "description": "hello world of express js",
+  "name": "cm mobile api",
+  "description": "cm mobile api dependency package",
   "version": "0.0.1",
   "private": true,
   "dependencies": {

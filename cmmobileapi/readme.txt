@@ -3,6 +3,7 @@
 npm install express -save
 npm install mongoose -save
 npm install body-parser -save
+npm install fs -save
 2>. package.json give detail content and run tcommand to install
 npm install
 
