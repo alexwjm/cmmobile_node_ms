@@ -1,0 +1,35 @@
+section {
+	height:100%;
+}
+
+section > div:first-child {
+	width:100%;
+	background-size:cover;
+}
+
+section > div:last-child {
+	width:100%;
+	height:600px;
+}
+
+
+img {
+	height:220px;
+	width:100%;
+}
+
+input {
+	border:0px;
+	background:rgba(0, 0, 0, 0.6);
+	color:#ffff00;
+}
+
+button {
+	width:100px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+section > div > div {
+	text-align:center;
+}

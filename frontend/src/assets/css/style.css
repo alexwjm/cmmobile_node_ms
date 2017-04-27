@@ -1,0 +1,14 @@
+ html,body {
+ 	width: 100%;
+ 	height: 100%;
+ 	overflow: hidden;
+ }
+      
+ * {
+ 	padding: 0;margin: 0;box-sizing: border-box;
+    font: 14px/1.5 'Microsoft Yahei','Helvetica Neue',Tahoma,'Simsun',Arial,Helvetica,STHeiti;
+ }
+      
+ li {
+ 	list-style-type:none;
+ }
