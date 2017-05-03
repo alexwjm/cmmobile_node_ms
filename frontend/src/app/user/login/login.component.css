@@ -10,6 +10,8 @@ section > div:first-child {
 section > div:last-child {
 	width:100%;
 	height:600px;
+	background:url(../../../assets/images/citicity.jpg) no-repeat top left scroll;
+	background-size: 100%;
 }
 
 

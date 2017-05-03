@@ -1,5 +1,6 @@
 import {Routes} from "@angular/router";
 import {LoginComponent} from "./user/login";
+import {MenuComponent} from "./menu";
 
 
 
@@ -7,11 +8,15 @@ import {LoginComponent} from "./user/login";
 export const rootRouterConfig: Routes = [
   {
     path: "",
-    redirectTo: "list",
+    redirectTo: "login",
     pathMatch: 'full'
   },
   {
-    path: "list",
+    path: "login",
     component: LoginComponent
+  },
+  {
+  	path: "menu",
+  	component: MenuComponent
   }
 ];

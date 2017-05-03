@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 
 
@@ -8,5 +9,11 @@ import {Component} from '@angular/core';
 	styleUrls: ['login.component.css']
 })
 export class LoginComponent {
+	constructor(private router: Router) {
 	
+	};
+
+	doLogin(){
+		this.router.navigate(['/menu']);
+	};
 }

@@ -1,0 +1,5 @@
+section {
+	height:100% ; width:100%; position:absolute;
+	background:url(../../assets/images/menu-background.jpg) no-repeat top left scroll;
+	background-size: cover;
+}

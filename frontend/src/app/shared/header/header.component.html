@@ -1,0 +1,11 @@
+<section>
+	<div>
+		<button *ngIf="labelLeft!='' && labelLeft!='undefined'" type="button" class="btn btn-info" (click)="leftClick()">{{labelLeft}}</button>
+	</div>
+	<div>
+		<img>
+	</div>
+	<div>
+		<button *ngIf="labelRight!='' && labelRight!='undefined'" type="button" class="btn btn-info" (click)="rightClick()">{{labelRight}}</button>
+	</div>
+</section>

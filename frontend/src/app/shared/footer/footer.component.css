@@ -1,0 +1,14 @@
+section {
+	width:100%;
+	height: 50px; 
+	background:url(../../../assets/images/banner.jpg) repeat-x 0 0;
+	position:fixed; 
+	bottom:0; 
+	text-align:center;
+	z-index:999;
+}
+
+div {
+	width:100%;
+	text-align:center;
+}
