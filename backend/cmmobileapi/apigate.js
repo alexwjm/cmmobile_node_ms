@@ -25,6 +25,7 @@ app.use(bodyParser.json({limit: '1mb'})); // for parsing application/json
 app.all('*',function(req,res,next){
 	console.log("into * function");
 	res.set("Access-Control-Allow-Origin","*");
+	res.set("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
 	next();
 	}
 )
@@ -37,7 +38,7 @@ app.get('/hello', function(req, res){
 /**register user**/
 app.post('/register', function(req, res){
   try{
-    console.log(req.header("content-type"));
+  	console.log("/register:req.body:"+JSON.stringify(req.body));
     var user_name=req.body.user;  
   	var password=req.body.password;  
   	console.log("User name = "+user_name+", password is "+password); 
@@ -62,6 +63,7 @@ app.post('/register', function(req, res){
 /**user login**/
 app.post('/login', function(req, res){
   try{
+  	console.log("/login:req.body:"+JSON.stringify(req.body));
 	  var user_name=req.body.user;  
   	var password=req.body.password;
     if(user_name==null || password==null){
@@ -93,8 +95,13 @@ app.post('/login', function(req, res){
 app.post('/loadcards', function(req, res){
   var user_name=req.body.user;  
 
+  var cardList = [
+   { cardNo: '12345', cardStatus: 'good', embossedName: 'test card1' },
+   { cardNo: '67890', cardStatus: 'just so sos', embossedName: 'test card2' }
+  ];
+  res.send(cardList);
  //call bank API to get the cards list
-  res.send({"message":"login successfully"});
+
 
 });
 
