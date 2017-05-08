@@ -21,6 +21,13 @@ mongoose.connect(constants.DBUrl);
 
 app.use(bodyParser.json({limit: '1mb'})); // for parsing application/json
 //app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+/**all request come to server set Access-Control-Allow-Origin for cross call*/
+app.all('*',function(req,res,next){
+	console.log("into * function");
+	res.set("Access-Control-Allow-Origin","*");
+	next();
+	}
+)
 
 /**use for test connect**/
 app.get('/hello', function(req, res){
