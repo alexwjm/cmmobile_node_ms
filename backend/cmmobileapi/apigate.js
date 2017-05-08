@@ -66,6 +66,7 @@ app.post('/login', function(req, res){
   	var password=req.body.password;
     if(user_name==null || password==null){
       res.send({"message": "please input user name and password"});
+      return;
     }
   	console.log("User name = "+user_name+", password is "+password); 
   	userModel.findByUser(user_name,password,function(error,userObject){
@@ -79,10 +80,12 @@ app.post('/login', function(req, res){
         res.status(constants.HttpStatus_WhenVerifyFailed);
         res.send({"message":"username or password wrongly"});
       }
+      return;
   	});
   }catch(e){
     console.log("post:login catch block!!!");
     res.send({"message":"go to exception flow"});
+    return;
   }
 });
 
